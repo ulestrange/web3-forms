@@ -1,0 +1,24 @@
+<form [formGroup]="form2"  (ngSubmit)="onSubmit()">
+
+
+    <!-- First Name Input Group -->
+    <div class="form-group">
+        <label for="firstname"> First Name: </label>
+        <input id="firstname" type="text" formControlName="firstName" class="form-control">
+    </div>
+ <!-- Last name input group--> 
+    <div class="form-group">
+        <label for="lastname">
+            Last Name: </label>
+        <input type="text" id="lastname" formControlName="lastName" class="form-control">
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Submit</button>
+
+    
+</form>
+
+
+<!-- Just to demonstrate how the acutal form values can be accessed on the template -->
+<p>{{form2.value['firstName']}}  {{form2.value['lastName']}}</p>
+

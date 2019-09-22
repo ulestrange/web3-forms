@@ -1,0 +1,12 @@
+
+
+
+<div class="form-group">
+    <label for="firstname"> First Name </label>
+    <input class="form-control" type="text" [formControl]="firstNameControl" id="firstname" />
+</div>
+
+<button class="btn btn-primary" (click)="updateName()" > Change Name</button>
+
+
+<p> Hello {{firstNameControl.value}}  </p>

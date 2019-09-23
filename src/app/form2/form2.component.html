@@ -1,24 +1,25 @@
 <form [formGroup]="form2" (ngSubmit)="onSubmit()">
 
-
     <!-- First Name Input Group -->
     <div class="form-group">
-        <label for="firstname"> First Name: </label>
+        <label for="firstname"> First Name : </label>
         <input id="firstname" type="text" formControlName="firstName" class="form-control">
 
-        <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger" >
-            
+        <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)" class="alert alert-danger">
             <div *ngIf="firstName.hasError('required')">First Name is required</div>
             <div *ngIf="firstName.hasError('minlength')">First name has a minimum length</div>
+            <div *ngIf="firstName.hasError('pattern')">Letters a-z onlys</div>
         </div>
     </div>
-        <div class="form-group">
-            <label for="lastname">
-                Last Name: </label>
-            <input type="text" id="lastname" formControlName="lastName" class="form-control">
-        </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Submit</button>
+    <!-- Second Name Input Group -->
+    <div class="form-group">
+        <label for="lastname">
+            Last Name: </label>
+        <input type="text" id="lastname" formControlName="lastName" class="form-control">
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Submit</button>
 
 
 </form>

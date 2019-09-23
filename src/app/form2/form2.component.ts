@@ -9,7 +9,7 @@ import { FormControl, FormGroup ,  Validators } from '@angular/forms'
 export class Form2Component implements OnInit {
 
   form2 = new FormGroup({
-    firstName: new FormControl('',[Validators.required, Validators.minLength(5)]),
+    firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
     lastName: new FormControl(''),
   });
 

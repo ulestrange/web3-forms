@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms'
+import { FormControl, FormGroup ,  Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-form2',
@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms'
 export class Form2Component implements OnInit {
 
   form2 = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl('',[Validators.required, Validators.minLength(5)]),
     lastName: new FormControl(''),
   });
 
@@ -22,4 +22,6 @@ export class Form2Component implements OnInit {
     console.log(this.form2.value);
   }
 
+
+  get firstName () { return this.form2.get('firstName')}
 }

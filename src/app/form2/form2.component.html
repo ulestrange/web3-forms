@@ -8,7 +8,8 @@
 
         <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger" >
             
-            First Name is required.
+            <div *ngIf="firstName.hasError('required')">First Name is required</div>
+            <div *ngIf="firstName.hasError('minlength')">First name has a minimum length</div>
         </div>
     </div>
         <div class="form-group">
@@ -21,6 +22,7 @@
 
 
 </form>
+
 
 
 <!-- Just to demonstrate how the acutal form values can be accessed on the template -->

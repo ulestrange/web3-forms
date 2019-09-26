@@ -1,6 +1,6 @@
 <form [formGroup]="form2" (ngSubmit)="onSubmit()">
 
-    <!-- First Name Input Group -->
+    <!-- First Name Input Control -->
     <div class="form-group">
         <label for="firstname"> First Name : </label>
         <input id="firstname" type="text" formControlName="firstName" class="form-control">
@@ -12,16 +12,30 @@
         </div>
     </div>
 
-    <!-- Second Name Input Group -->
+    <!-- Second Name Input Coontrol -->
     <div class="form-group">
         <label for="lastname">
             Last Name: </label>
         <input type="text" id="lastname" formControlName="lastName" class="form-control">
     </div>
 
+<!-- The array of Interests -->
+
+<div *ngFor="let interest of interests.controls; let i=index">
+    
+     <label>
+      Interest :
+      <input type="text" [formControlName]="i">
+    </label>
+  </div>
+
+
+
     <button class="btn btn-primary" type="submit" [disabled]="!form2.valid">Submit</button>
 
+<!-- Just for fun - showing how we can set form values -->
 
+    <button class="btn btn-danger" type="button" (click) = "onDangerClicked()">Change All</button>
 </form>
 
 

@@ -1,0 +1,45 @@
+<form [formGroup]="form3" (ngSubmit)="onSubmit()">
+
+    <!-- First Name Input Control -->
+    <div class="form-group">
+        <label for="firstname"> First Name : </label>
+        <input id="firstname" type="text" formControlName="firstName" class="form-control">
+
+        <!-- <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)" class="alert alert-danger">
+        <div *ngIf="firstName.hasError('required')">First Name is required</div>
+        <div *ngIf="firstName.hasError('minlength')">First name has a minimum length</div>
+        <div *ngIf="firstName.hasError('pattern')">Letters a-z onlys</div>
+    </div> -->
+    </div>
+
+    <!-- Second Name Input Coontrol -->
+    <div class="form-group">
+        <label for="lastname">
+            Last Name: </label>
+        <input type="text" id="lastname" formControlName="lastName" class="form-control">
+    </div>
+
+<!-- The part for adding interests -->
+
+<fieldset>
+    <legend>Interests</legend>
+    <div formArrayName="interests">
+         <button (click)="addInterest()">Add Interest</button>
+      
+        <div *ngFor="let interest of interests.controls; let i=index">
+          <!-- The repeated interest template -->
+          <label>
+            Interest {{i+1}}:
+            <input type="text" [formControlName]="i">
+          </label>
+        </div>
+      </div>
+
+    </fieldset>
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+
+
+</form>
+<!-- Just to demonstrate how the acutal form values can be accessed on the template -->
+<p>{{form3.value['firstName']}} {{form3.value['lastName']}}</p>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup ,  Validators, FormArray } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Person } from '../model/person';
 
 @Component({
   selector: 'app-form3',
@@ -8,24 +9,35 @@ import { FormControl, FormBuilder, FormGroup ,  Validators, FormArray } from '@a
 })
 export class Form3Component implements OnInit {
 
-  form3 = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    interests: this.fb.array([this.fb.control('')])
-  });
+  @Input() person: Person;
+
+  form3: FormGroup;
+
+
+
 
   get interests() {
 
     return this.form3.get('interests') as FormArray;
   }
 
-addInterest() {
- this.interests.push(this.fb.control(''));
-}
+  addInterest() {
+    this.interests.push(this.fb.control(''));
+  }
 
-  constructor(private fb: FormBuilder) { }
+
+  constructor(private fb: FormBuilder) {
+
+  }
 
   ngOnInit() {
+    console.log("person", this.person);
+
+    this.form3 = this.fb.group({
+      firstName: [this.person.firstName],
+      lastName: [this.person.lastName],
+      interests: this.fb.array([this.fb.control(this.person.interests[0])])
+    });
   }
 
 

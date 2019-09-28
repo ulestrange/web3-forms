@@ -23,8 +23,9 @@
 
 <fieldset>
     <legend>Interests</legend>
+    
     <div formArrayName="interests">
-         <button (click)="addInterest()">Add Interest</button>
+
       
         <div *ngFor="let interest of interests.controls; let i=index">
           <!-- The repeated interest template -->
@@ -33,6 +34,13 @@
             <input type="text" [formControlName]="i">
           </label>
         </div>
+
+        <!-- The button for adding another interest -->
+        <button  class="btn btn-outline-info btn-sm"
+        (click)="addInterest()"
+        
+        
+        >+ Interest</button>
       </div>
 
     </fieldset>

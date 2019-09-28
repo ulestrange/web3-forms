@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  Person } from './model/Person';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = ' Una\'s Lovely Forms';
+
+  people: Person[];
+
+  constructor()
+  {
+    this.people = [{firstName: "Una", lastName:"Evans", interests: []}];
+    console.log(this.people[0]);
+  }
 }

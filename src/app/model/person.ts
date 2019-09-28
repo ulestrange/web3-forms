@@ -4,7 +4,7 @@
 export class Person {
   constructor(
     public firstName: string,
-    public secondName: string,
+    public lastName: string,
     public interests: string[] ) {
   }
 }

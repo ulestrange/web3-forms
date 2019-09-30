@@ -16,4 +16,9 @@ export class AppComponent {
     this.people = [{firstName: "Una", lastName:"Evans", interests: []}];
     console.log(this.people[0]);
   }
+
+  personSubmitted (person : Person) : void
+  {
+    console.log('Person submitted' , person);
+  }
 }

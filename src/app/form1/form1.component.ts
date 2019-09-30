@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ReactiveFormsModule, FormControl, FormsModule} from '@angular/forms'
+import {ReactiveFormsModule, FormControl, FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-form1',

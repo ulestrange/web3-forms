@@ -12,12 +12,12 @@ import { Person } from '../model/person';
 export class Form2Component implements OnInit {
 
   form2 = new FormGroup({
-    firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
+    firstName: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
     lastName: new FormControl(''),
     interests: new FormArray([])
   });
 
-  constructor() { 
+  constructor() {
     this.firstName.valueChanges.subscribe(
       (value: string) => {
         console.log('firstname changed to:', value);
@@ -40,8 +40,6 @@ export class Form2Component implements OnInit {
 
     this.addInterest();
 
-    
-
   }
 
   ngOnInit() {
@@ -49,25 +47,22 @@ export class Form2Component implements OnInit {
 
   onSubmit() {
     console.log(this.form2.value);
-
-    if (this.firstName.value.toUpperCase().includes("UNA"))
-    {
-            this.firstName.setValue("there is only one Una !!");
+    if (this.firstName.value.toUpperCase().includes('UNA')) {
+            this.firstName.setValue('there is only one Una !!');
     }
   }
 
-  onDangerClicked(){
+  onDangerClicked() {
     // this.form2.setValue({
     //   firstName: "Una is Great",
     //    lastName: "mof fdasf fdasf ha"});
   }
 
   addInterest() {
-   
     this.interests.push(new FormControl(''));
   }
 
-  get firstName () { return this.form2.get('firstName')}
+  get firstName() { return this.form2.get('firstName'); }
 
-  get interests() { return this.form2.get('interests') as FormArray};
+  get interests() { return this.form2.get('interests') as FormArray; }
 }

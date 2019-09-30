@@ -11,14 +11,14 @@ export class AppComponent {
 
   people: Person[];
 
-  constructor()
-  {
-    this.people = [{firstName: "Una", lastName:"Evans", interests: []}];
+  constructor() {
+    this.people = [{firstName: 'Una', lastName: 'Evans', interests: []}];
     console.log(this.people[0]);
   }
 
-  personSubmitted (person : Person) : void
-  {
+  handlePersonSubmitted(person: any){
     console.log('Person submitted' , person);
   }
+
+  
 }

@@ -16,7 +16,7 @@
    [people]= "people[0]"> 
 </app-form3> -->
 
-<app-form3 [person]="people[0]"></app-form3>
+<app-form3 [person]="people[0]" (personSubmitted) = "handlePersonSubmitted($event)" ></app-form3>
 </div>
 
 

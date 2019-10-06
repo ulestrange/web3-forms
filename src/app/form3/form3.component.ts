@@ -15,7 +15,7 @@ export class Form3Component implements OnInit {
 
   // The new values from the form.
 
-  @Output() personSubmitted = new EventEmitter<any>();
+  @Output() personSubmitted = new EventEmitter<Person>();
 
   form3: FormGroup;
 

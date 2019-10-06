@@ -12,19 +12,18 @@ export class AppComponent {
 
   people: Person[];
 
-
-
   constructor() {
-    this.people = [{firstName: 'Una', lastName: 'Evans', interests: []},
-    {firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses']}];
+    this.people = [
+      { firstName: 'Una', lastName: 'Evans', interests: [] },
+      { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] }];
   }
 
   handlePersonSubmitted(person: Person) {
-    console.log('Person submitted' , person);
+    console.log('Person submitted', person);
   }
 
   handlePersonSelected(person: Person) {
-    console.log('Person selected' , person);
+    console.log('Person selected', person);
   }
 
 

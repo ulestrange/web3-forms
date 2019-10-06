@@ -6,15 +6,11 @@
 
       <div  >
         {{p.firstName}} {{p.lastName}}
-        <button class="btn-primary" (click)='edit(p)'
-        
-                
-        [class.bg-info]="isSelected(p)"
-        [class.text-white]="isSelected(p)" >Edit</button>
+        <button class="btn-primary" (click)='edit(p)' >Edit</button>
       </div>
     </div>
    
     <app-form3 
-    *ngIf=currentPerson
+    *ngIf="currentPerson"
     [person]="currentPerson" (personSubmitted) = "handlePersonSubmitted($event)" ></app-form3>
-    </div>
+  

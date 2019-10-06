@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Person } from '../model/person';
 
@@ -7,7 +7,7 @@ import { Person } from '../model/person';
   templateUrl: './form3.component.html',
   styleUrls: ['./form3.component.css']
 })
-export class Form3Component implements OnInit {
+export class Form3Component implements OnInit, OnChanges {
 
   // The inital values for the form
 
@@ -40,6 +40,15 @@ export class Form3Component implements OnInit {
     });
   }
 
+  ngOnChanges() {
+    console.log('On Changes:', this.person);
+    if (this.form3) {
+      
+      
+      this.form3.setValue({ firstName : this.person.firstName, lastName: this.person.lastName,
+      interests : this.fb.array(this.person.interests) });
+      }
+  }
 
   onSubmit() {
     console.log(this.form3.value);

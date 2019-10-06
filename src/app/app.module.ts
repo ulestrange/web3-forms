@@ -16,7 +16,7 @@ import { ListPeopleComponent } from './list-people/list-people.component';
     Form1Component,
     Form2Component,
     Form3Component,
-    ListPeopleComponent,
+    ListPeopleComponent
   ],
   imports: [
     BrowserModule,

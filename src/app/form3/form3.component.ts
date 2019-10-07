@@ -1,5 +1,8 @@
 import { Component, OnInit, OnChanges, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+
 import { Person } from '../model/person';
 
 @Component({
@@ -18,6 +21,7 @@ export class Form3Component implements OnInit, OnChanges {
   @Output() personSubmitted = new EventEmitter<Person>();
 
   form3: FormGroup;
+  closeResult: string;
 
   get interests() {
     return this.form3.get('interests') as FormArray;
@@ -28,8 +32,13 @@ export class Form3Component implements OnInit, OnChanges {
   }
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private modalService: NgbModal) {
   }
+
+
+
+
+
 
   ngOnInit() {
 
@@ -84,4 +93,26 @@ export class Form3Component implements OnInit, OnChanges {
 
     this.personSubmitted.emit(this.form3.value);
   }
+
+
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+
 }

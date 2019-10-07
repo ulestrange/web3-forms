@@ -59,7 +59,7 @@
   </div>
  
   <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Save Edits</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save Edits</button>
     </div>
 </ng-template>
 
@@ -67,7 +67,7 @@
 
 <!-- the launch button -->
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit selected person</button>
+<button type="submit" class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit selected person</button>
 
 <hr>
 

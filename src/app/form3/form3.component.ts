@@ -89,7 +89,7 @@ export class Form3Component implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    console.log(this.form3.value);
+    console.log('submitted' , this.form3.value);
 
     this.personSubmitted.emit(this.form3.value);
   }
@@ -97,11 +97,13 @@ export class Form3Component implements OnInit, OnChanges {
 
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log( 'person submitted' , this.form3.value);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
 
 
   private getDismissReason(reason: any): string {

@@ -2,11 +2,15 @@
 
 
 
-    <div *ngFor="let p of personList" class="card">
+    <div *ngFor="let p of personList"
+    [class.bg-info]="isSelected(p)"
+        [class.text-white]="isSelected(p)" class="card">
 
-      <div  >
+      <div>
         {{p.firstName}} {{p.lastName}}
-        <button class="btn-primary" (click)='edit(p)' >Edit</button>
+
+         
+        <button class="btn-primary" (click)='edit(p)' >Select</button>
       </div>
     </div>
    

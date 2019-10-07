@@ -47,14 +47,11 @@
           </div>
 
           <!-- The button for adding another interest -->
-          <button class="btn btn-outline-info btn-sm" (click)="addInterest($event)">+ Interest</button>
+          <button class="btn btn-sm" (click)="addInterest($event)">+ Interest</button>
         </div>
 
       </fieldset>
-      <button class="btn btn-primary" type="submit">Submit</button>
-
-
-
+    
     </form>
     <!-- Just to demonstrate how the acutal form values can be accessed on the template -->
     <p>{{form3.value['firstName']}} {{form3.value['lastName']}}</p>
@@ -62,7 +59,7 @@
   </div>
  
   <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Save Edits</button>
     </div>
 </ng-template>
 
@@ -70,7 +67,7 @@
 
 <!-- the launch button -->
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit selected person</button>
 
 <hr>
 

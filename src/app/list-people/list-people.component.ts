@@ -22,4 +22,17 @@ export class ListPeopleComponent implements OnInit {
   edit(person: Person) {
     this.currentPerson = person;
   }
+
+
+  clicked(person: Person): void {
+    this.currentPerson = person;
+   // this.onCourseSelected.emit(course);
+  }
+
+  isSelected(person: Person): boolean {
+    if (!person || !this.currentPerson) {
+      return false;
+    }
+    return (person === this.currentPerson) ;
+  }
 }

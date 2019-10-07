@@ -42,12 +42,41 @@ export class Form3Component implements OnInit, OnChanges {
 
   ngOnChanges() {
     console.log('On Changes:', this.person);
+
+
     if (this.form3) {
-      
-      
-      this.form3.setValue({ firstName : this.person.firstName, lastName: this.person.lastName,
-      interests : this.fb.array(this.person.interests) });
+      this.form3.patchValue({
+        firstName: this.person.firstName, lastName: this.person.lastName,
+      });
+
+      const inputInterestArray = this.person.interests;
+
+      if (inputInterestArray.length === this.interests.length) {
+        // same length - just swap values
+        this.interests.patchValue(inputInterestArray);
+      } else if (inputInterestArray.length < this.interests.length) {
+        // less interests comming in then are there already
+        this.interests.patchValue(inputInterestArray);
+        const length = this.interests.length;
+        for (let i = length; i >= inputInterestArray.length; i--) {
+          this.interests.removeAt(i);
+        }
+      } else {
+        // more interests comming in that are there already
+        const length = this.interests.length;
+        const newlength = inputInterestArray.length;
+        const extraInterests = inputInterestArray.splice(length, newlength - length);
+       
+       // replace the existing interests
+        this.interests.patchValue(inputInterestArray);
+
+
+        // add the new interests
+        extraInterests.forEach( (interest) =>
+        { this.interests.push(this.fb.control(interest));  });
+
       }
+    }
   }
 
   onSubmit() {

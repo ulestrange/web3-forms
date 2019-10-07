@@ -15,7 +15,10 @@ export class AppComponent {
   constructor() {
     this.people = [
       { firstName: 'Una', lastName: 'Evans', interests: [] },
-      { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] }];
+      { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] },
+      { firstName: 'Therese', lastName: 'May', interests: ['Shoes', 'Brexit'] },
+    { firstName: 'Donald', lastName: 'Trump', interests :
+     ['Twitter', 'Himself', 'Gold','Building', 'Korea']}];
   }
 
   handlePersonSubmitted(person: Person) {

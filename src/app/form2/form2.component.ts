@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup ,  Validators } from '@angular/forms'
+import { FormControl, FormGroup ,  Validators } from '@angular/forms';
+import {debounceTime, map, filter} from 'rxjs/operators';
+import { Subject, interval } from 'rxjs';
 
 @Component({
   selector: 'app-form2',
@@ -13,7 +15,15 @@ export class Form2Component implements OnInit {
     lastName: new FormControl(''),
   });
 
-  constructor() { }
+  constructor() {
+    this.firstName.valueChanges
+    .pipe(debounceTime(300),
+    map(value => value.toUpperCase()),
+    map(value => value.charAt(value.length - 1) ),
+    filter(value => value !== 'U')).
+    subscribe((value: string ) => {
+      console.log(value); } );
+   }
 
   ngOnInit() {
   }
@@ -23,5 +33,9 @@ export class Form2Component implements OnInit {
   }
 
 
-  get firstName () { return this.form2.get('firstName')}
+ 
+
+get firstName() { return this.form2.get('firstName')}
+
+
 }

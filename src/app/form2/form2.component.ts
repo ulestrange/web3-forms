@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup ,  Validators } from '@angular/forms';
-import {debounceTime, map, filter} from 'rxjs/operators';
-import { Subject, interval } from 'rxjs';
+import {debounceTime, map, filter,  pairwise} from 'rxjs/operators';
+import { Subject, interval, Observable, merge } from 'rxjs';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-form2',
@@ -15,13 +16,18 @@ export class Form2Component implements OnInit {
     lastName: new FormControl(''),
   });
 
+  source1 = this.firstName.valueChanges
+  .pipe(debounceTime(300),
+  map(value => value.toUpperCase()),
+  map(value => value.charAt(value.length - 1) ),
+  filter(value => value !== 'U'));
+
+  source2 = this.lastName.valueChanges;
+
+  combineSource: Observable<any> = merge(this.source1, this.source2);
+
   constructor() {
-    this.firstName.valueChanges
-    .pipe(debounceTime(300),
-    map(value => value.toUpperCase()),
-    map(value => value.charAt(value.length - 1) ),
-    filter(value => value !== 'U')).
-    subscribe((value: string ) => {
+    this.combineSource.subscribe((value: string ) => {
       console.log(value); } );
    }
 
@@ -35,7 +41,7 @@ export class Form2Component implements OnInit {
 
  
 
-get firstName() { return this.form2.get('firstName')}
+get firstName() { return this.form2.get('firstName')};
 
-
+get lastName() { return this.form2.get('lastName')}
 }

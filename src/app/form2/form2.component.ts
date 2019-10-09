@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup ,  Validators } from '@angular/forms';
-import {debounceTime, map, filter,  pairwise} from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { debounceTime, map, filter, pluck, take } from 'rxjs/operators';
 import { Subject, interval, Observable, merge } from 'rxjs';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -12,26 +12,44 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class Form2Component implements OnInit {
 
   form2 = new FormGroup({
-    firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
+    firstName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
     lastName: new FormControl(''),
   });
 
-  source1 = this.firstName.valueChanges
-  .pipe(debounceTime(300),
-  map(value => value.toUpperCase()),
-  map(value => value.charAt(value.length - 1) ),
-  filter(value => value !== 'U'));
+  isTrumpNamed = false;
 
-  source2 = this.lastName.valueChanges;
+  source1$ = this.firstName.valueChanges
+    .pipe(
+      debounceTime(300),
+      map(value => value.toUpperCase()),
+      map(value => value.charAt(value.length - 1)),
+      filter(value => value !== 'U'));
 
-  combineSource: Observable<any> = merge(this.source1, this.source2);
+  source2$ = this.lastName.valueChanges;
+
+  combineSource$: Observable<any> = merge(this.source1$, this.source2$);
+
+  formsource$: Observable<any> = this.form2.valueChanges;
 
   constructor() {
-    this.combineSource.subscribe((value: string ) => {
-      console.log(value); } );
-   }
+
+
+  }
 
   ngOnInit() {
+
+    // this.combineSource$.subscribe((value: string) => {
+    //   console.log(value);
+    // });
+
+    this.formsource$.pipe(
+      pluck('lastName'),
+      filter(value => value.includes('Trump')),
+      take(1)
+      ).subscribe((value: string) => {
+        console.log('Bingo ', value);
+        this.isTrumpNamed = true;
+      });
   }
 
   onSubmit() {
@@ -39,9 +57,9 @@ export class Form2Component implements OnInit {
   }
 
 
- 
 
-get firstName() { return this.form2.get('firstName')};
 
-get lastName() { return this.form2.get('lastName')}
+  get firstName() { return this.form2.get('firstName'); }
+
+  get lastName() { return this.form2.get('lastName'); }
 }

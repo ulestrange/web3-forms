@@ -20,16 +20,21 @@ export class Form2Component implements OnInit {
 
   source1$ = this.firstName.valueChanges
     .pipe(
-      debounceTime(300),
-      map(value => value.toUpperCase()),
+     // debounceTime(1000),                               
+      map(value => value.toUpperCase()),                  
       map(value => value.charAt(value.length - 1)),
-      filter(value => value !== 'U'));
+      filter(value => value !== 'U')
+      );
 
   source2$ = this.lastName.valueChanges;
 
   combineSource$: Observable<any> = merge(this.source1$, this.source2$);
 
-  formsource$: Observable<any> = this.form2.valueChanges;
+  formSource$: Observable<any> = this.form2.valueChanges.pipe(
+    pluck('lastName'),
+    filter(value => value.length > 3),
+    take(1)
+  );
 
   constructor() {
 
@@ -38,18 +43,24 @@ export class Form2Component implements OnInit {
 
   ngOnInit() {
 
-    // this.combineSource$.subscribe((value: string) => {
-    //   console.log(value);
-    // });
 
-    this.formsource$.pipe(
+// this.source1$.subscribe( value => console.log(value));
+
+    this.formSource$.subscribe({
+      next: (value: string) => {console.log(value); },
+      error: msg => {console.warn(msg)},
+      complete: () => console.log('recived the message')
+    }
+  );
+
+    this.formSource$.pipe(
       pluck('lastName'),
-      filter(value => value.includes('Trump')),
-      take(1)
-      ).subscribe((value: string) => {
-        console.log('Bingo ', value);
-        this.isTrumpNamed = true;
-      });
+      // filter(value => value.includes('Trump')),
+      // take(1)
+      // ).subscribe((value: string) => {
+      //   console.log('Bingo ', value);
+      //   this.isTrumpNamed = true;}
+      );
   }
 
   onSubmit() {

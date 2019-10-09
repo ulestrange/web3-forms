@@ -58,33 +58,8 @@ export class Form3Component implements OnInit, OnChanges {
         firstName: this.person.firstName, lastName: this.person.lastName,
       });
 
-      const inputInterestArray = this.person.interests;
+      this.swapInterestValues(this.person.interests);
 
-      if (inputInterestArray.length === this.interests.length) {
-        // same length - just swap values
-        this.interests.patchValue(inputInterestArray);
-      } else if (inputInterestArray.length < this.interests.length) {
-        // less interests comming in then are there already
-        this.interests.patchValue(inputInterestArray);
-        const length = this.interests.length;
-        for (let i = length; i >= inputInterestArray.length; i--) {
-          this.interests.removeAt(i);
-        }
-      } else {
-        // more interests comming in that are there already
-        const length = this.interests.length;
-        const newlength = inputInterestArray.length;
-        const extraInterests = inputInterestArray.splice(length, newlength - length);
-       
-       // replace the existing interests
-        this.interests.patchValue(inputInterestArray);
-
-
-        // add the new interests
-        extraInterests.forEach( (interest) =>
-        { this.interests.push(this.fb.control(interest));  });
-
-      }
     }
   }
 
@@ -104,7 +79,38 @@ export class Form3Component implements OnInit, OnChanges {
     });
   }
 
+ private swapInterestValues (inputInterestArray){
+  if (inputInterestArray.length === this.interests.length) {
+    // same length - just swap values
+    this.interests.patchValue(inputInterestArray);
+  } else if (inputInterestArray.length < this.interests.length) {
+    // less interests comming in then are there already
+    this.interests.patchValue(inputInterestArray);
+    const length = this.interests.length;
+    for (let i = length; i >= inputInterestArray.length; i--) {
+      this.interests.removeAt(i);
+      console.log(inputInterestArray);
+    }
+  } else {
+    // more interests comming in that are there already
+    const length = this.interests.length;
+    const newlength = inputInterestArray.length;
+    const firstSetofValues = inputInterestArray.slice(0, length)
+    const extraInterests = inputInterestArray.slice(length, newlength);
+   // replace the existing interests
+    this.interests.patchValue(firstSetofValues);
 
+
+    // add the new interests
+    extraInterests.forEach( (interest) =>
+    { this.interests.push(this.fb.control(interest));  });
+
+    console.log(inputInterestArray);
+
+  }
+
+
+ }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {

@@ -1,7 +1,18 @@
-<form [formGroup]="form3" (ngSubmit)="onSubmit()">
+<ng-template #content let-modal>
 
-    <!-- First Name Input Control -->
-    <div class="form-group">
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="form3" (ngSubmit)="onSubmit()">
+
+      <!-- First Name Input Control -->
+      <div class="form-group">
         <label for="firstname"> First Name : </label>
         <input id="firstname" type="text" formControlName="firstName" class="form-control">
 
@@ -10,43 +21,54 @@
         <div *ngIf="firstName.hasError('minlength')">First name has a minimum length</div>
         <div *ngIf="firstName.hasError('pattern')">Letters a-z onlys</div>
     </div> -->
-    </div>
-
-    <!-- Second Name Input Coontrol -->
-    <div class="form-group">
-        <label for="lastname">
-            Last Name: </label>
-        <input type="text" id="lastname" formControlName="lastName" class="form-control">
-    </div>
-
-<!-- The part for adding interests -->
-
-<fieldset>
-    <legend>Interests</legend>
-    
-    <div formArrayName="interests">
-
-      
-        <div *ngFor="let interest of interests.controls; let i=index">
-          <!-- The repeated interest template -->
-          <label>
-            Interest {{i+1}}:
-            <input type="text" [formControlName]="i">
-          </label>
-        </div>
-
-        <!-- The button for adding another interest -->
-        <button  class="btn btn-outline-info btn-sm"
-        (click)="addInterest($event)"
-        
-        >+ Interest</button>
       </div>
 
-    </fieldset>
-    <button class="btn btn-primary" type="submit">Submit</button>
+      <!-- Second Name Input Coontrol -->
+      <div class="form-group">
+        <label for="lastname">
+          Last Name: </label>
+        <input type="text" id="lastname" formControlName="lastName" class="form-control">
+      </div>
+
+      <!-- The part for adding interests -->
+
+      <fieldset>
+        <legend>Interests</legend>
+
+        <div formArrayName="interests">
+
+
+          <div *ngFor="let interest of interests.controls; let i=index">
+            <!-- The repeated interest template -->
+            <label>
+              Interest {{i+1}}:
+              <input type="text" [formControlName]="i">
+            </label>
+          </div>
+
+          <!-- The button for adding another interest -->
+          <button class="btn btn-sm" (click)="addInterest($event)">+ Interest</button>
+        </div>
+
+      </fieldset>
+    
+    </form>
+    <!-- Just to demonstrate how the acutal form values can be accessed on the template -->
+    <p>{{form3.value['firstName']}} {{form3.value['lastName']}}</p>
+
+  </div>
+ 
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save Edits</button>
+    </div>
+</ng-template>
 
 
 
-</form>
-<!-- Just to demonstrate how the acutal form values can be accessed on the template -->
-<p>{{form3.value['firstName']}} {{form3.value['lastName']}}</p>
+<!-- the launch button -->
+
+<button type="submit" class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit selected person</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>

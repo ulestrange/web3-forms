@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+import { Subject, interval, Observable, merge, of, pipe } from 'rxjs';
+
+
+import { UserDataService } from '../user-data-service';
+import { Person } from '../model/person';
+import { tap } from 'rxjs/operators';
+
+@Component({
+  selector: 'app-show-current-users',
+  templateUrl: './show-current-users.component.html',
+  styleUrls: ['./show-current-users.component.css'],
+  providers: [UserDataService]
+})
+export class ShowCurrentUsersComponent implements OnInit {
+
+  personList: Person[];
+
+  constructor(private userDataService: UserDataService) { }
+
+  ngOnInit() {
+
+    this.userDataService.currentUsers$.subscribe({
+      next: (value : Person[]) => {
+        console.log(value);
+        this.personList = value},
+      complete: () => {console.log("all done")}
+    });
+
+
+      // this.formSource$.subscribe({
+      //   next: (value: string) => {console.log(value); },
+      //   error: msg => {console.warn(msg)},
+      //   complete: () => console.log('recived the message')
+      // }
+    console.log([1, 2, 3, 4]);
+  }
+
+
+
+}

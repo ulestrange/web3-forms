@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 import { Person } from '../model/person';
@@ -55,10 +57,12 @@ export class Form3Component implements OnInit, OnChanges {
 
     if (this.form3) {
       this.form3.patchValue({
+
         firstName: this.person.firstName, lastName: this.person.lastName,
       });
 
       this.swapInterestValues(this.person.interests);
+
 
     }
   }
@@ -70,6 +74,7 @@ export class Form3Component implements OnInit, OnChanges {
   }
 
 
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       console.log( 'person submitted' , this.form3.value);
@@ -78,6 +83,9 @@ export class Form3Component implements OnInit, OnChanges {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+    // swapInterestValues takes an array of strings and puts them into
+  // the existing formArray interests.
+  // could be much simplier - need to tidy
 
  private swapInterestValues (inputInterestArray){
   if (inputInterestArray.length === this.interests.length) {
@@ -124,3 +132,9 @@ export class Form3Component implements OnInit, OnChanges {
 
 
 }
+
+
+
+
+  
+

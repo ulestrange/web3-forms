@@ -1,20 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {Person} from '../model/person';
+import {UserDataService} from '../user-data-service';
 
 @Component({
   selector: 'app-list-people',
   templateUrl: './list-people.component.html',
-  styleUrls: ['./list-people.component.css']
+  styleUrls: ['./list-people.component.css'],
+  providers: [UserDataService]
 })
 export class ListPeopleComponent implements OnInit {
 
-  @Input() personList: Person[];
+  personList: Person[];
   currentPerson: Person;
 
-  constructor() { }
+  constructor(private userDataService: UserDataService) {
+  }
 
   ngOnInit() {
+    this.personList = this.userDataService.getUserDataList();
     console.log ('people', this.personList);
   }
 
@@ -22,6 +26,7 @@ export class ListPeopleComponent implements OnInit {
   edit(person: Person) {
     this.currentPerson = person;
   }
+
 
 
   clicked(person: Person): void {
@@ -34,5 +39,9 @@ export class ListPeopleComponent implements OnInit {
       return false;
     }
     return (person === this.currentPerson) ;
+
+  handlePersonSubmitted($event) {
+    console.log($event);
+
   }
 }

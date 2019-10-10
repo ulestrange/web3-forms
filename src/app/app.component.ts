@@ -8,26 +8,22 @@ import { Person } from './model/person';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = ' Una\'s Lovely Forms';
+  title = 'Una\'s Lovely Forms';
 
   people: Person[];
 
   constructor() {
-    this.people = [
-      { firstName: 'Una', lastName: 'Evans', interests: [] },
-      { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] },
-      { firstName: 'Therese', lastName: 'May', interests: ['Shoes', 'Brexit'] },
-    { firstName: 'Donald', lastName: 'Trump', interests :
-     ['Twitter', 'Himself', 'Gold','Building', 'Korea']}];
+
+
   }
 
-  handlePersonSubmitted(person: Person) {
-    console.log('Person submitted', person);
-  }
+  // handlePersonSubmitted(person: Person) {
+  //   console.log('Person submitted', person);
+  // }
 
-  handlePersonSelected(person: Person) {
-    console.log('Person selected', person);
-  }
+  // handlePersonSelected(person: Person) {
+  //   console.log('Person selected', person);
+  // }
 
 
 

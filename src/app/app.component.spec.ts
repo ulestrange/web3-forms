@@ -1,11 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        MockListPeopleComponent
       ],
     }).compileComponents();
   }));
@@ -16,10 +18,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'forms'`, () => {
+  it(`should have as title 'Una\'s Lovely Forms''`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('forms');
+    expect(app.title).toEqual('Una\'s Lovely Forms');
   });
 
   it('should render title in a h1 tag', () => {
@@ -29,3 +31,11 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to forms!');
   });
 });
+
+
+@Component({
+  selector: 'app-list-people',
+  template: ''
+})
+class MockListPeopleComponent{
+}

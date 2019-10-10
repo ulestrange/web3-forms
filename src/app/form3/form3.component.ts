@@ -60,8 +60,12 @@ export class Form3Component implements OnInit, OnChanges {
     this.personSubmitted.emit(this.form3.value);
   }
 
+  // swapInterestValues takes an array of strings and puts them into
+  // the existing formArray interests.
+  // could be much simplier - need to tidy
 
-  private swapInterestValues(inputInterestArray) {
+
+  private swapInterestValues(inputInterestArray: string[]) {
     if (inputInterestArray.length === this.interests.length) {
       // same length - just swap values
       this.interests.patchValue(inputInterestArray);
@@ -71,23 +75,17 @@ export class Form3Component implements OnInit, OnChanges {
       const length = this.interests.length;
       for (let i = length; i >= inputInterestArray.length; i--) {
         this.interests.removeAt(i);
-        console.log(inputInterestArray);
       }
     } else {
-      // more interests comming in that are there already
+      // more interests comming in than are there already
       const length = this.interests.length;
       const newlength = inputInterestArray.length;
-      const firstSetofValues = inputInterestArray.slice(0, length)
+      const firstSetofValues = inputInterestArray.slice(0, length );
       const extraInterests = inputInterestArray.slice(length, newlength);
       // replace the existing interests
       this.interests.patchValue(firstSetofValues);
-
-
       // add the new interests
       extraInterests.forEach((interest) => { this.interests.push(this.fb.control(interest)); });
-
-      console.log(inputInterestArray);
-
     }
 
   }

@@ -8,7 +8,7 @@ import { Person } from './model/person';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = ' Una\'s Lovely Forms';
+  title = 'Una\'s Lovely Forms';
 
   people: Person[];
 

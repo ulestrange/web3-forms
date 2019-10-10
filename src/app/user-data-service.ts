@@ -11,21 +11,36 @@ import { Person } from './model/person';
 })
 export class UserDataService {
 
-  constructor() { }
+  private people: Person[] = [
+    { firstName: 'Una', lastName: 'Evans', interests: [] },
+    { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] },
+    { firstName: 'Therese', lastName: 'May', interests: ['Shoes', 'Brexit'] },
+    { firstName: 'Donald', lastName: 'Trump', interests :
+     ['Twitter', 'Himself', 'Gold', 'Building', 'Korea']}
+  ];
 
-  // getUserListData(): Observable <Person[]> {
-  //   const people = [
-  //     { firstName: 'Una', lastName: 'Evans', interests: [] },
-  //     { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] }];
+  constructor() { 
 
-  //   return  of(people) ;
-  // }
+    this.myObservable.subscribe(value => {console.log(value); } );
+  }
+
+  myObservable = interval(1000).pipe(
+    map (value => this.people)
+    );
 
   getUserDataList(): Person[] {
-    const people = [
-      { firstName: 'Una', lastName: 'Evans', interests: [] },
-      { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] }];
-    return people;
+    return this.people;
   }
+
+  // this returns an observable, which can change over time
+
+  getCurrentUsers(): Observable <Person[]> {
+    return interval(1000).pipe(
+    map (value => this.people)
+    );
+  }
+
+
+
 }
 

@@ -26,4 +26,8 @@ export class ListPeopleComponent implements OnInit {
   edit(person: Person) {
     this.currentPerson = person;
   }
+
+  handlePersonSubmitted($event) {
+    console.log($event);
+  }
 }

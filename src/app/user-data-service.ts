@@ -16,17 +16,22 @@ export class UserDataService {
     { firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'] },
     { firstName: 'Therese', lastName: 'May', interests: ['Shoes', 'Brexit'] },
     { firstName: 'Donald', lastName: 'Trump', interests :
-     ['Twitter', 'Himself', 'Gold', 'Building', 'Korea']}
+     ['Twitter', 'Himself', 'Gold', 'Building', 'Korea']},
+     {firstName: 'Sinead', lastName: 'Evans', interests:
+    ['Sleeping','Reading','Warm PJs']}
   ];
 
   constructor() { 
 
-    this.myObservable.subscribe(value => {console.log(value); } );
   }
 
-  myObservable = interval(1000).pipe(
-    map (value => this.people)
+  currentUsers$ = interval(1000).pipe(
+    map (value => this.people),
+    map (value => value.slice(Math.floor(Math.random()*value.length),value.length)),
+    take(10)
     );
+
+ 
 
   getUserDataList(): Person[] {
     return this.people;
@@ -34,11 +39,12 @@ export class UserDataService {
 
   // this returns an observable, which can change over time
 
-  getCurrentUsers(): Observable <Person[]> {
-    return interval(1000).pipe(
-    map (value => this.people)
-    );
-  }
+  // getCurrentUsers(): Observable <Person[]> {
+  //   return interval(1000).pipe(
+  //   map (value => this.people),
+  //   take(10)
+  //   );
+  // }
 
 
 

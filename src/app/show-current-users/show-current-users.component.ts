@@ -20,7 +20,7 @@ export class ShowCurrentUsersComponent implements OnInit {
 
   ngOnInit() {
 
-    this.userDataService.currentUsers$.subscribe({
+    this.userDataService.getCurrentUsers().subscribe({
       next: (value : Person[]) => {
         console.log(value);
         this.personList = value},
@@ -33,7 +33,7 @@ export class ShowCurrentUsersComponent implements OnInit {
       //   error: msg => {console.warn(msg)},
       //   complete: () => console.log('recived the message')
       // }
-    console.log([1, 2, 3, 4]);
+ 
   }
 
 

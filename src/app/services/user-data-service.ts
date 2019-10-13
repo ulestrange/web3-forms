@@ -29,6 +29,8 @@ export class UserDataService {
 
   }
 
+
+  // for testing only this returns an observable 
   getCurrentUsers(): Observable<Person[]> {
     return interval(3000).pipe(
       map(value => this.people.filter(this.isActive)),
@@ -36,33 +38,16 @@ export class UserDataService {
     );
   }
 
-  isActive(p: Person) : boolean
+  // for testing only
+
+  private isActive(p: Person) : boolean
   {
     return (Math.random() > 0.8);
   }
 
-  currentUsers$ = interval(10000).pipe(
-    map(value => this.people),
-    filter(value => Math.random() > 0.5),
-    take(10)
-  );
-
-
-
   getUserDataList(): Person[] {
     return this.people;
   }
-
-  // this returns an observable, which can change over time
-
-  // getCurrentUsers(): Observable <Person[]> {
-  //   return interval(1000).pipe(
-  //   map (value => this.people),
-  //   take(10)
-  //   );
-  // }
-
-
 
 }
 

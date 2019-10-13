@@ -1,0 +1,9 @@
+/* this is applied only to this component*/
+
+.card {
+    background-color: lightblue;
+    width: 30%;
+    text-align: center;
+    font-size: 0.8em;
+
+}

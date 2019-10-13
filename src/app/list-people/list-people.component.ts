@@ -19,13 +19,12 @@ export class ListPeopleComponent implements OnInit {
 
   ngOnInit() {
     this.personList = this.userDataService.getUserDataList();
-    console.log ('people', this.personList);
-  }
 
+  }
 
   edit(person: Person) {
     this.currentPerson = person;
-    console.log(this.currentPerson);
+
   }
 
 

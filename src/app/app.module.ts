@@ -9,6 +9,7 @@ import { Form2Component } from './form2/form2.component';
 import { Form3Component } from './form3/form3.component';
 import { ListPeopleComponent } from './list-people/list-people.component';
 import { ShowCurrentUsersComponent } from './show-current-users/show-current-users.component';
+import { Form3ModalComponent } from './form3-modal/form3-modal.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ShowCurrentUsersComponent } from './show-current-users/show-current-use
     Form2Component,
     Form3Component,
     ListPeopleComponent,
-    ShowCurrentUsersComponent
+    ShowCurrentUsersComponent,
+    Form3ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { ShowCurrentUsersComponent } from './show-current-users/show-current-use
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ Form3ModalComponent ]  //not sure if needed -- Una
 })
 export class AppModule { }

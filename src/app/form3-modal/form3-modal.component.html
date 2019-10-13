@@ -1,0 +1,62 @@
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+    <div class="modal-body">
+      <form [formGroup]="form3" (ngSubmit)="onSubmit()" >
+  
+        <!-- First Name Input Control -->
+        <div class="form-group">
+          <label for="firstname"> First Name : </label>
+          <input id="firstname" type="text" formControlName="firstName" class="form-control">
+  
+  
+  <!-- leave out the validaion for now -->
+          <!-- <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)" class="alert alert-danger">
+          <div *ngIf="firstName.hasError('required')">First Name is required</div>
+          <div *ngIf="firstName.hasError('minlength')">First name has a minimum length</div>
+          <div *ngIf="firstName.hasError('pattern')">Letters a-z onlys</div>
+      </div> -->
+        </div>
+  
+        <!-- Second Name Input Coontrol -->
+        <div class="form-group">
+          <label for="lastname">
+            Last Name: </label>
+          <input type="text" id="lastname" formControlName="lastName" class="form-control">
+        </div>
+  
+        <!-- The part for adding interests -->
+  
+        <fieldset>
+          <legend>Interests</legend>
+  
+          <div formArrayName="interests">
+  
+  
+            <div *ngFor="let interest of interests.controls; let i=index">
+              <!-- The repeated interest template -->
+              <label>
+                Interest {{i+1}}:
+                <input type="text" [formControlName]="i">
+              </label>
+            </div>
+  
+            <!-- The button for adding another interest -->
+            <button class="btn btn-sm" type="button" (click)="addInterest()">+ Interest</button>
+          </div>
+  
+        </fieldset>
+      
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >Save Edits</button>
+        </div>
+  
+      </form>
+    </div>
+   
+

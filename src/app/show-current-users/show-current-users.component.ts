@@ -21,19 +21,13 @@ export class ShowCurrentUsersComponent implements OnInit {
   ngOnInit() {
 
     this.userDataService.getCurrentUsers().subscribe({
-      next: (value : Person[]) => {
-        console.log(value);
-        this.personList = value},
-      complete: () => {console.log("all done")}
+      next: (value: Person[]) => {
+        this.personList = value
+      },
+      complete: () => { console.log("all done") }
     });
 
 
-      // this.formSource$.subscribe({
-      //   next: (value: string) => {console.log(value); },
-      //   error: msg => {console.warn(msg)},
-      //   complete: () => console.log('recived the message')
-      // }
- 
   }
 
 

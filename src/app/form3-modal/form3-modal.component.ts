@@ -15,7 +15,7 @@ export class Form3ModalComponent implements OnInit {
 
   @Input() person: Person;
 
-  @Output() personSubmitted = new EventEmitter<Person>();
+  // @Output() personSubmitted = new EventEmitter<Person>();
 
   form3: FormGroup;
   closeResult: string;
@@ -67,33 +67,9 @@ export class Form3ModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.activeModal.close('Form Submitted');
-    console.log('submitted', this.form3.value);
-
-    this.personSubmitted.emit(this.form3.value);
+    this.activeModal.close(this.form3.value);
 
   }
-
-
-  // this handles opening the model form - from ngBootstrap
-  // it is called from the template, currently it passes in the template variable 'content'
-  // 
-
-  // open(content: any) {
-  //   this.modalService.open(content, { ariaLabelledBy: 'modal form for users' }).result.then(
-  //     (result) => {
-  //       this.closeResult = `Closed with: ${result}`;
-  //     },
-  //     (reason) => {
-  //       if (reason === 'Save Click') // 
-  //       {
-  //         console.log("emitting person");
-  //         this.personSubmitted.emit(this.form3.value);
-  //       }
-  //       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //     });
-  // }
-
 
   // swapInterestValues takes an array of strings and puts them into
   // the existing formArray interests.
@@ -129,17 +105,6 @@ export class Form3ModalComponent implements OnInit {
     }
 
 
-  }
-
-  private getDismissReason(reason: any): string {
-    console.log("dismmis");
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
 

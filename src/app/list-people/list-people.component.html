@@ -1,7 +1,5 @@
 
-
-
-
+<!-- Create a row for every person on the list -->
     <div *ngFor="let p of personList"
     [class.bg-info]="isSelected(p)"
         [class.text-white]="isSelected(p)" class="card">
@@ -12,13 +10,12 @@
             <div class="col card-title"> {{p.firstName}} </div>
             <div class="col"> {{p.lastName}}</div>
             <div class="col"> image here </div>
-            </div>
-         
-        
+            </div>        
       </div>
     </div>
    
+    <!-- If a person is selected add the ability to edit that person -->
     <app-form3 
     *ngIf="currentPerson"
-    [person]="currentPerson"  ></app-form3>
+    [person]="currentPerson" (personSubmitted) = "handlePersonSubmitted($event)" ></app-form3>
   

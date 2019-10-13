@@ -7,10 +7,14 @@
         [class.text-white]="isSelected(p)" class="card">
 
       <div>
-        {{p.firstName}} {{p.lastName}}
-
          
-        <button class="btn-primary" (click)='edit(p)' >Select</button>
+        <div class="row card-body" (click)='edit(p)'> 
+            <div class="col card-title"> {{p.firstName}} </div>
+            <div class="col"> {{p.lastName}}</div>
+            <div class="col"> image here </div>
+            </div>
+         
+        
       </div>
     </div>
    

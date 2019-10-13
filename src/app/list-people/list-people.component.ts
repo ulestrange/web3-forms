@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import {Person} from '../model/person';
-import {UserDataService} from '../user-data-service';
+import {UserDataService} from '../services/user-data-service';
 
 @Component({
   selector: 'app-list-people',
@@ -25,6 +25,7 @@ export class ListPeopleComponent implements OnInit {
 
   edit(person: Person) {
     this.currentPerson = person;
+    console.log(this.currentPerson);
   }
 
 
@@ -39,6 +40,7 @@ export class ListPeopleComponent implements OnInit {
       return false;
     }
     return (person === this.currentPerson) ;
+  }
 
   handlePersonSubmitted($event) {
     console.log($event);

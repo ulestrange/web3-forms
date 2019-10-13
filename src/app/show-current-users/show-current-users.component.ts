@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject, interval, Observable, merge, of, pipe } from 'rxjs';
 
 
-import { UserDataService } from '../user-data-service';
+import { UserDataService } from '../services/user-data-service';
 import { Person } from '../model/person';
 import { tap } from 'rxjs/operators';
 

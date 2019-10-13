@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -68,57 +68,55 @@ export class Form3Component implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    console.log('submitted' , this.form3.value);
+    console.log('submitted', this.form3.value);
 
     this.personSubmitted.emit(this.form3.value);
   }
 
 
-
   open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      console.log( 'person submitted' , this.form3.value);
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      console.log('person submitted', this.form3.value);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-    // swapInterestValues takes an array of strings and puts them into
+  // swapInterestValues takes an array of strings and puts them into
   // the existing formArray interests.
   // could be much simplier - need to tidy
 
- private swapInterestValues (inputInterestArray){
-  if (inputInterestArray.length === this.interests.length) {
-    // same length - just swap values
-    this.interests.patchValue(inputInterestArray);
-  } else if (inputInterestArray.length < this.interests.length) {
-    // less interests comming in then are there already
-    this.interests.patchValue(inputInterestArray);
-    const length = this.interests.length;
-    for (let i = length; i >= inputInterestArray.length; i--) {
-      this.interests.removeAt(i);
+  private swapInterestValues(inputInterestArray) {
+    if (inputInterestArray.length === this.interests.length) {
+      // same length - just swap values
+      this.interests.patchValue(inputInterestArray);
+    } else if (inputInterestArray.length < this.interests.length) {
+      // less interests comming in then are there already
+      this.interests.patchValue(inputInterestArray);
+      const length = this.interests.length;
+      for (let i = length; i >= inputInterestArray.length; i--) {
+        this.interests.removeAt(i);
+        console.log(inputInterestArray);
+      }
+    } else {
+      // more interests comming in that are there already
+      const length = this.interests.length;
+      const newlength = inputInterestArray.length;
+      const firstSetofValues = inputInterestArray.slice(0, length)
+      const extraInterests = inputInterestArray.slice(length, newlength);
+      // replace the existing interests
+      this.interests.patchValue(firstSetofValues);
+
+
+      // add the new interests
+      extraInterests.forEach((interest) => { this.interests.push(this.fb.control(interest)); });
+
       console.log(inputInterestArray);
+
     }
-  } else {
-    // more interests comming in that are there already
-    const length = this.interests.length;
-    const newlength = inputInterestArray.length;
-    const firstSetofValues = inputInterestArray.slice(0, length)
-    const extraInterests = inputInterestArray.slice(length, newlength);
-   // replace the existing interests
-    this.interests.patchValue(firstSetofValues);
 
-
-    // add the new interests
-    extraInterests.forEach( (interest) =>
-    { this.interests.push(this.fb.control(interest));  });
-
-    console.log(inputInterestArray);
 
   }
-
-
- }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -126,7 +124,7 @@ export class Form3Component implements OnInit, OnChanges {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
   }
 
@@ -136,5 +134,5 @@ export class Form3Component implements OnInit, OnChanges {
 
 
 
-  
+
 

@@ -17,14 +17,5 @@ export class AppComponent {
 
   }
 
-  // handlePersonSubmitted(person: Person) {
-  //   console.log('Person submitted', person);
-  // }
-
-  // handlePersonSelected(person: Person) {
-  //   console.log('Person selected', person);
-  // }
-
-
 
 }

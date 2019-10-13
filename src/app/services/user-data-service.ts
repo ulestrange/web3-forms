@@ -38,7 +38,7 @@ export class UserDataService {
     );
   }
 
-  // for testing only
+  // for testing only, sets some people active
 
   private isActive(p: Person) : boolean
   {

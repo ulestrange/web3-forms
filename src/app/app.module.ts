@@ -11,6 +11,8 @@ import { ListPeopleComponent } from './list-people/list-people.component';
 import { ShowCurrentUsersComponent } from './show-current-users/show-current-users.component';
 import { Form3ModalComponent } from './form3-modal/form3-modal.component';
 
+import { UserDataService} from './services/user-data-service';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +31,8 @@ import { Form3ModalComponent } from './form3-modal/form3-modal.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [UserDataService],
   bootstrap: [AppComponent],
-  entryComponents: [ Form3ModalComponent ]  //needed because the component is not included in a template
+  entryComponents: [ Form3ModalComponent ]  // needed because the component is not included in a template
 })
 export class AppModule { }

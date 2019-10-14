@@ -7,7 +7,7 @@ import {UserDataService} from '../services/user-data-service';
   selector: 'app-list-people',
   templateUrl: './list-people.component.html',
   styleUrls: ['./list-people.component.css'],
-  providers: [UserDataService]
+  providers: []
 })
 export class ListPeopleComponent implements OnInit {
 

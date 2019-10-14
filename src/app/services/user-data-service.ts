@@ -6,9 +6,9 @@ import { Subject, interval, Observable, merge, of } from 'rxjs';
 
 import { Person } from '../model/person';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  {providedIn: 'root'}
+)
 export class UserDataService {
 
   private people: Person[] = [
@@ -26,6 +26,7 @@ export class UserDataService {
   ];
 
   constructor() {
+    console.log('instance of service was created');
 
   }
 

@@ -19,7 +19,6 @@ export class ListPeopleComponent implements OnInit {
 
   ngOnInit() {
     this.personList = this.userDataService.getUserDataList();
-
   }
 
   edit(person: Person) {

@@ -1,8 +1,12 @@
-<p>show-current-users works!</p>
+
 
 <div *ngFor="let p of personList" class="card">
 
     <div >
       {{p.firstName}} {{p.lastName}}
     </div>
+  </div>
+
+  <div *ngIf="!personList || personList.length===0" class="card">
+    <p>No active users</p>
   </div>

@@ -19,15 +19,12 @@ export class ShowCurrentUsersComponent implements OnInit {
   constructor(private userDataService: UserDataService) { }
 
   ngOnInit() {
-
     this.userDataService.getCurrentUsers().subscribe({
       next: (value: Person[]) => {
         this.personList = value
-      },
-      complete: () => { console.log("all done") }
+      }, 
+      complete: () => { console.log("no new people"); }
     });
-
-
   }
 
 

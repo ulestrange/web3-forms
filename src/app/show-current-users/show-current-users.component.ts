@@ -9,8 +9,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-show-current-users',
   templateUrl: './show-current-users.component.html',
-  styleUrls: ['./show-current-users.component.css'],
-  providers: [UserDataService]
+  styleUrls: ['./show-current-users.component.css']
 })
 export class ShowCurrentUsersComponent implements OnInit {
 

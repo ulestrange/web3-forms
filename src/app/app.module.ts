@@ -29,7 +29,7 @@ import { Form3ModalComponent } from './form3-modal/form3-modal.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [{provide: 'UnaMessage', useValue: 'hello from a value provider'}],
   bootstrap: [AppComponent],
   entryComponents: [ Form3ModalComponent ]  //needed because the component is not included in a template
 })

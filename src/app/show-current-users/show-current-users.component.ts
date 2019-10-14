@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Subject, interval, Observable, merge, of, pipe } from 'rxjs';
 
 
@@ -10,13 +10,15 @@ import { tap } from 'rxjs/operators';
   selector: 'app-show-current-users',
   templateUrl: './show-current-users.component.html',
   styleUrls: ['./show-current-users.component.css'],
-  providers: []
 })
 export class ShowCurrentUsersComponent implements OnInit {
 
   personList: Person[];
 
-  constructor(private userDataService: UserDataService) { }
+  constructor( 
+     @Inject('UnaMessage') private aMess:string,
+     private userDataService: UserDataService)
+   { }
 
   ngOnInit() {
     this.userDataService.getCurrentUsers().subscribe({
@@ -25,6 +27,8 @@ export class ShowCurrentUsersComponent implements OnInit {
       }, 
       complete: () => { console.log("no new people"); }
     });
+
+    console.log(this.aMess);
   }
 
 

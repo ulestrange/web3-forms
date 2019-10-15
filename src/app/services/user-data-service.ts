@@ -7,7 +7,7 @@ import { Subject, interval, Observable, merge, of } from 'rxjs';
 import { Person } from '../model/person';
 
 @Injectable(
-  {providedIn: 'root'}
+ // {providedIn: 'root'}
 )
 export class UserDataService {
 

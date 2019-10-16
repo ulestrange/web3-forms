@@ -12,6 +12,7 @@ import { ShowCurrentUsersComponent } from './show-current-users/show-current-use
 import { Form3ModalComponent } from './form3-modal/form3-modal.component';
 
 import { UserDataService} from './services/user-data-service';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserDataService} from './services/user-data-service';
     BrowserModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
 
   ],
   providers: [UserDataService],

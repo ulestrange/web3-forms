@@ -18,4 +18,12 @@
     <app-form3 
     *ngIf="currentPerson"
     [person]="currentPerson" (personSubmitted) = "handlePersonSubmitted($event)" ></app-form3>
+
+    <!-- If a person is slected add the ability to view that person in a routed component -->
+
+    <div *ngIf="currentPerson">
+      <a [routerLink]="['/person', currentPerson.id]" class="btn btn-lg btn-primary"> View details for {{currentPerson.firstName}} </a>
+    </div>
+
+    
   

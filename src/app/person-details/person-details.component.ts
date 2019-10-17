@@ -18,15 +18,12 @@ export class PersonDetailsComponent implements OnInit {
   person: Person;
 
   constructor(private route: ActivatedRoute, private userDataService: UserDataService) {
-    route.params.subscribe ( parameters => {this.id = parameters.id; });
    }
 
   ngOnInit() {
+    this.route.params.subscribe ( parameters => {this.id = parameters.id; });
     this.people = this.userDataService.getUserDataList();
-    console.log(this.people);
     this.person = this.people.find(p => this.id === p.id );
-    console.log(this.person);
-
   }
 
 }

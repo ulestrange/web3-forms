@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
+import { ProtectedComponent } from './protected/protected.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
     Form3ModalComponent,
     NotFoundComponent,
     HomeComponent,
-    PersonDetailsComponent
+    PersonDetailsComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,

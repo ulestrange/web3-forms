@@ -8,6 +8,7 @@ import { ListPeopleComponent} from './list-people/list-people.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PersonDetailsComponent } from './person-details/person-details.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'About', redirectTo: '/Home'},
   {path: 'form1', component: Form1Component},
   {path: 'ListPeople', component: ListPeopleComponent},
+  {path: 'person/:id', component: PersonDetailsComponent},
   {path: '**', component: NotFoundComponent, pathMatch: 'full'}
 ];
 

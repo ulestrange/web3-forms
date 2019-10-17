@@ -13,6 +13,9 @@ import { Form3ModalComponent } from './form3-modal/form3-modal.component';
 
 import { UserDataService} from './services/user-data-service';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { PersonDetailsComponent } from './person-details/person-details.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { AppRoutingModule } from './app-routing.module';
     Form3Component,
     ListPeopleComponent,
     ShowCurrentUsersComponent,
-    Form3ModalComponent
+    Form3ModalComponent,
+    NotFoundComponent,
+    HomeComponent,
+    PersonDetailsComponent
   ],
   imports: [
     BrowserModule,

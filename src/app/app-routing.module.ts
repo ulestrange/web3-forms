@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
+import { ProtectedComponent} from './protected/protected.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path: 'form1', component: Form1Component},
   {path: 'ListPeople', component: ListPeopleComponent},
   {path: 'person/:id', component: PersonDetailsComponent},
-  {path: '**', component: NotFoundComponent, pathMatch: 'full'}
+  {path: '**', component: NotFoundComponent, pathMatch: 'full'},
+  {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -7,21 +7,19 @@
   </div>
 </div> -->
 
-  
+
 <div class="container">
   <header>
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
 
-<nav>
-  <a routerLink="/form1">Go to Form1</a>
-  <a routerLink="/ListPeople">Go to the second form</a>
-</nav>
-
-<router-outlet></router-outlet>
-
-
-
-
-
+    <nav>
+      <ul>
+        <li><a routerLink="/form1">Go to Form1</a></li>
+        <li><a routerLink="/ListPeople">Go to the second form</a></li>
+      </ul>
+    </nav>
+  </header>
+  <router-outlet></router-outlet>
+</div>

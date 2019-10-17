@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Form1Component} from './form1/form1.component';
 
+
+
+import { Form1Component} from './form1/form1.component';
 import { ListPeopleComponent} from './list-people/list-people.component';
 
 

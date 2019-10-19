@@ -17,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { ProtectedComponent } from './protected/protected.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ProtectedComponent } from './protected/protected.component';
     NotFoundComponent,
     HomeComponent,
     PersonDetailsComponent,
-    ProtectedComponent
+    ProtectedComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

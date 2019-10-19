@@ -13,6 +13,9 @@ import { ProtectedComponent} from './protected/protected.component';
 import { AuthGuard } from './auth/auth.guard';
 
 
+// the array below defines the routes for the application
+
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'Home', component: HomeComponent},
@@ -20,8 +23,9 @@ const routes: Routes = [
   {path: 'form1', component: Form1Component},
   {path: 'ListPeople', component: ListPeopleComponent},
   {path: 'person/:id', component: PersonDetailsComponent},
-  {path: '**', component: NotFoundComponent, pathMatch: 'full'},
-  {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]}
+  {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
+  {path: '**', component: NotFoundComponent, pathMatch: 'full'} // this needs to be last
+
 ];
 
 @NgModule({

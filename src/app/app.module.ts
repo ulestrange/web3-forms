@@ -18,6 +18,8 @@ import { HomeComponent } from './home/home.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { ProtectedComponent } from './protected/protected.component';
 import { LoginComponent } from './login/login.component';
+import { ShowrouteinfoComponent } from './showrouteinfo/showrouteinfo.component';
+import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     PersonDetailsComponent,
     ProtectedComponent,
-    LoginComponent
+    LoginComponent,
+    ShowRouteInfoComponent,
+
   ],
   imports: [
     BrowserModule,

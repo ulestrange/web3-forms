@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+
 
 
 
@@ -16,22 +17,35 @@ export class PersonDetailsComponent implements OnInit {
   id: string;
   private people: Person[];
   person: Person;
+  nextId: string;
 
-  constructor(private route: ActivatedRoute, 
+  constructor(private route: ActivatedRoute,
     private router: Router, private userDataService: UserDataService) {
-   }
+  }
 
   ngOnInit() {
-    this.route.params.subscribe ( parameters => {this.id = parameters.id; });
-    this.people = this.userDataService.getUserDataList();
-    this.person = this.people.find(p => this.id === p.id );
-    console.log(this.person);
 
-    if (!this.person){
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
+      this.people = this.userDataService.getUserDataList();
+      this.person = this.people.find(p => this.id === p.id);
+      console.log(this.person);
+    }
+    );
+
+    if (!this.person) {
       this.router.navigate(['/not-found']);
 
     }
 
+  }
+
+  getNextId(): string {
+    var i = this.people.findIndex(p => this.id === p.id);
+    if (i + 1 >= this.people.length)
+      return (this.people[0].id)
+    else
+      return (this.people[i + 1].id)
   }
 
 }

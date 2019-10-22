@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Route, ActivatedRoute } from '@angular/router';
+import {Route, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-show-route-info',
@@ -11,8 +11,10 @@ export class ShowRouteInfoComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe ( parameters => {console.log ('parameters : ',parameters); });
-    this.route.queryParams.subscribe ( parameters => {console.log ('query parameters : ',parameters); });
+    this.route.paramMap.subscribe ( (parameters : ParamMap) => {
+      console.log ('parameters : ',parameters); });
+    this.route.queryParamMap.subscribe ( parameters => {
+      console.log ('query parameters : ',parameters); });
   }
 
 }

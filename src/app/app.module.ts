@@ -19,6 +19,8 @@ import { PersonDetailsComponent } from './person-details/person-details.componen
 import { ProtectedComponent } from './protected/protected.component';
 import { LoginComponent } from './login/login.component';
 
+import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     PersonDetailsComponent,
     ProtectedComponent,
-    LoginComponent
+    LoginComponent,
+    ShowRouteInfoComponent
+
   ],
   imports: [
     BrowserModule,

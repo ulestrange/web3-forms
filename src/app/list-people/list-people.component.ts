@@ -41,6 +41,6 @@ export class ListPeopleComponent implements OnInit {
   }
 
   handlePersonSubmitted($event) {
-    console.log("list-people getting data from its child", $event);
+    console.log('list-people getting data from its child', $event);
   }
 }

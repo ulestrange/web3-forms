@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { ProtectedComponent} from './protected/protected.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 
 
 // the array below defines the routes for the application
@@ -24,6 +25,9 @@ const routes: Routes = [
   {path: 'ListPeople', component: ListPeopleComponent},
   {path: 'person/:id', component: PersonDetailsComponent},
   {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},
+  {path: 'testRoute', component: ShowRouteInfoComponent },
+  {path: 'testRoute/:user', component: ShowRouteInfoComponent },
+  {path: 'testRoute/:user/:id/:mess', component: ShowRouteInfoComponent },
   {path: '**', component: NotFoundComponent, pathMatch: 'full'} // this needs to be last
 
 ];

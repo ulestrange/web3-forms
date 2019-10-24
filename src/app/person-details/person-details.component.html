@@ -5,5 +5,12 @@
 <h2>{{person.id}}</h2>
 <h3>{{person.firstName}}</h3>
 
+
+<!-- This is just to demo what happens when you change the parameters for the same
+component. -->
+<div *ngIf="person">
+    <a [routerLink]="['/person', getNextId()]" class="btn btn-lg btn-primary"> Next Person >></a>
+  </div>
+
 </div>
 

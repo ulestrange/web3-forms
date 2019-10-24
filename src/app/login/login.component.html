@@ -1,7 +1,7 @@
-<form class="form-inline" *ngIf="!authService.isLoggedIn()">
+<form class="form-inline" *ngIf="!user" >
 
     <div class="form-group">
-        <label for="username"> User : </label>
+        <label for="username"> Email : </label>
         <input class="form-control" name="username" #username>
     </div>
 
@@ -15,8 +15,8 @@
 </form>
 
 
-<div class="well" *ngIf="authService.getUser()" >
-    Logged in as {{authService.getUser()}}
+<div class="well" *ngIf="user" >
+    Logged in as {{user.email }}
     <a href (click)="logout()" > Log Out</a>
 </div>
 

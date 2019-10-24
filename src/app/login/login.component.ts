@@ -9,27 +9,25 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   message: string;
+  user: firebase.User;
 
-  constructor(public authService: AuthService) { 
+  constructor(public authService: AuthService) {
     this.message = '';
-    
+
   }
 
   ngOnInit() {
+    this.authService.user$.subscribe( value => { this.user = value; });
   }
 
-  login(userName: string, password: string) : boolean {
+  login(email: string, password: string): void {
     this.message = '';
-    if (!this.authService.login(userName, password)){
-      this.message = 'not today sunshine';
-      setTimeout(function(){ this.message = '';}.bind(this), 2500);
-    }
-    return false;
+    this.authService.login(email, password);
+    console.log ('user is', this.user);
   }
 
-  logout (): boolean{
+  logout() {
     this.authService.logout();
-    return false;
   }
 
 }

@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+
 
 import { AppComponent } from './app.component';
 import { Form1Component } from './form1/form1.component';
@@ -21,6 +25,16 @@ import { LoginComponent } from './login/login.component';
 
 import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyDuSeBVfw-z0PFWi_269O9l9F-ZK0COm8w',
+  authDomain: 'web3angular.firebaseapp.com',
+  databaseURL: 'https://web3angular.firebaseio.com',
+  projectId: 'web3angular',
+  storageBucket: 'web3angular.appspot.com',
+  messagingSenderId: '878952047455',
+  appId: '1:878952047455:web:40943f6df0a8ef71774cea'
+};
 
 @NgModule({
   declarations: [
@@ -44,10 +58,12 @@ import { ShowRouteInfoComponent } from './show-route-info/show-route-info.compon
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
 
   ],
-  providers: [UserDataService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ Form3ModalComponent ]  // needed because the component is not included in a template
 })

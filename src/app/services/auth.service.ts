@@ -1,22 +1,37 @@
 import { Injectable } from '@angular/core';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  user$: Observable<firebase.User>;
 
-  login(user: string, password: string): boolean {
-    if (user === 'user' && password == 'password') {
-      localStorage.setItem('username', user);
-      return true;
-    }
-    return false;
+  constructor(private firebaseAuth: AngularFireAuth) {
+    this.user$ = firebaseAuth.authState;
   }
 
-  logout(): any {
-    localStorage.removeItem('username');
+  login(email: string, password: string) {
+    this.firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Nice, firestore auth worked!');
+      })
+      .catch(err => {
+        console.log('firestore auth didn\'t work:', err.message);
+      });
+  }
+
+  logout() {
+    this.firebaseAuth
+      .auth
+      .signOut();
   }
 
   getUser(): any {

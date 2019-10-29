@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,25 +9,20 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  message: string;
-  user: firebase.User;
+  public User$;
 
-  constructor(public authService: AuthService) {
-    this.message = '';
-
-  }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.user$.subscribe( value => { this.user = value; });
+    this.User$ = this.authService.user$;
   }
 
-  login(email: string, password: string): void {
-    this.message = '';
+  public login(email: string, password: string) {
     this.authService.login(email, password);
-    console.log ('user is', this.user);
+   
   }
 
-  logout() {
+  public logout(){
     this.authService.logout();
   }
 

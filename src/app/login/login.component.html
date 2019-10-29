@@ -1,8 +1,10 @@
-<form class="form-inline" *ngIf="!user" >
+
+
+<form class="form-inline" *ngIf="!(authService.isLoggedIn())" >
 
     <div class="form-group">
-        <label for="username"> Email : </label>
-        <input class="form-control" name="username" #username>
+        <label for="email"> Email : </label>
+        <input class="form-control" name="email" #email>
     </div>
 
     <div class="form-group">
@@ -10,13 +12,13 @@
         <input class="form-control" type="password" #password>
     </div>
 
-    <a class="btn btn-default" (click)="login(username.value, password.value)">
+    <a class="btn btn-default" (click)="login(email.value, password.value)">
         Submit</a>
 </form>
 
 
-<div class="well" *ngIf="user" >
-    Logged in as {{user.email }}
+<div class="well" *ngIf="(authService.isLoggedIn)" >
+     Logged in as {{ authService.getDisplayName()}}
     <a href (click)="logout()" > Log Out</a>
 </div>
 

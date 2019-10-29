@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵCompiler_compileModuleSync__POST_R3__ } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -11,9 +11,15 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   user$: Observable<firebase.User>;
+  userDetails: firebase.User;
+  displayName: string;
 
   constructor(private firebaseAuth: AngularFireAuth) {
     this.user$ = firebaseAuth.authState;
+    this.user$.subscribe(
+      (user) => {this.userDetails = user;
+      this.displayName = this.userDetails ? this.userDetails.displayName : '';}
+    )
   }
 
   login(email: string, password: string) {
@@ -34,11 +40,12 @@ export class AuthService {
       .signOut();
   }
 
-  getUser(): any {
-    return localStorage.getItem('username');
-  }
 
   isLoggedIn(): boolean {
-    return this.getUser() != null;
+    return this.userDetails != null;
+  }
+
+  getDisplayName(): string {
+    return this.userDetails ? this.userDetails.email : '';
   }
 }

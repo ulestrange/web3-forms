@@ -1,6 +1,6 @@
 
 
-<form class="form-inline" *ngIf="!(authService.isLoggedIn())" >
+<form class="form-inline" *ngIf="!(authService.IsLoggedIn())" >
 
     <div class="form-group">
         <label for="email"> Email : </label>
@@ -14,14 +14,17 @@
 
     <a class="btn btn-default" (click)="login(email.value, password.value)">
         Submit</a>
+
 </form>
 
 
-<div class="well" *ngIf="(authService.isLoggedIn)" >
-     Logged in as {{ authService.getDisplayName()}}
+<div class="well" *ngIf="(authService.IsLoggedIn)" >
+     Logged in as {{ authService.GetDisplayName()}}
     <a href (click)="logout()" > Log Out</a>
 </div>
 
 <div class="alert alert-danger" role="alert" *ngIf="message" >
     {{message}}
 </div> 
+
+<a routerLink="/register">New in these parts: Register Here</a>

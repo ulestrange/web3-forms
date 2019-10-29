@@ -24,6 +24,8 @@ import { ProtectedComponent } from './protected/protected.component';
 import { LoginComponent } from './login/login.component';
 
 import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
+import { RegisterComponent } from './register/register.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 const firebaseConfig = {
@@ -50,7 +52,9 @@ const firebaseConfig = {
     PersonDetailsComponent,
     ProtectedComponent,
     LoginComponent,
-    ShowRouteInfoComponent
+    ShowRouteInfoComponent,
+    RegisterComponent,
+    NavigationComponent
 
   ],
   imports: [

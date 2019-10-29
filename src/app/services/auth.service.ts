@@ -1,4 +1,4 @@
-import { Injectable, ɵCompiler_compileModuleSync__POST_R3__ } from '@angular/core';
+import { Injectable, ɵCompiler_compileModuleSync__POST_R3__, ɵSWITCH_COMPILE_NGMODULE__POST_R3__ } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -13,6 +13,7 @@ export class AuthService {
   user$: Observable<firebase.User>;
   userDetails: firebase.User;
   displayName: string;
+  ErrorMessage: string;
 
   constructor(private firebaseAuth: AngularFireAuth) {
     this.user$ = firebaseAuth.authState;
@@ -22,7 +23,7 @@ export class AuthService {
     )
   }
 
-  login(email: string, password: string) {
+  Login(email: string, password: string) {
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
@@ -34,18 +35,42 @@ export class AuthService {
       });
   }
 
-  logout() {
+
+  // /* Sign up */
+  // SignUp(email: string, password: string) {
+  //   this.firebaseAuth
+  //     .auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then(res => {
+  //       console.log('Successfully signed up!', res);
+  //     })
+  //     .catch(error => {
+  //       console.log('Something is wrong:', error.message);
+  //       this.ErrorMessage = error.errorMessage;
+  //     });    
+  // }
+
+  SignUp(email: string, password: string){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
+  }
+
+  Logout() {
     this.firebaseAuth
       .auth
       .signOut();
   }
 
 
-  isLoggedIn(): boolean {
+  IsLoggedIn(): boolean {
     return this.userDetails != null;
   }
 
-  getDisplayName(): string {
+  GetDisplayName(): string {
     return this.userDetails ? this.userDetails.email : '';
   }
 }

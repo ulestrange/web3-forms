@@ -15,7 +15,7 @@ constructor(private authService: AuthService){
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      const isLoggedIn = this.authService.isLoggedIn()
+      const isLoggedIn = this.authService.IsLoggedIn()
       console.log('AuthGuard#canActivate called');
     return isLoggedIn;
   }

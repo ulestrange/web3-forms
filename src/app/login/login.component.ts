@@ -18,12 +18,17 @@ export class LoginComponent implements OnInit {
   }
 
   public login(email: string, password: string) {
-    this.authService.login(email, password);
+    this.authService.Login(email, password);
+   
+  }
+
+  public signup(email: string, password: string) {
+    this.authService.SignUp(email, password);
    
   }
 
   public logout(){
-    this.authService.logout();
+    this.authService.Logout();
   }
 
 }

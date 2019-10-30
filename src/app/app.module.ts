@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AngularFireModule} from 'angularfire2';
-import { AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireAuthModule} from '@angular/fire/auth';
 
 
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { PersonDetailsComponent } from './person-details/person-details.component';
 import { ProtectedComponent } from './protected/protected.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent} from './login/login.component';
 
 import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 import { RegisterComponent } from './register/register.component';

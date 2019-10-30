@@ -1,1 +1,42 @@
-<p>navigation works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- Branding -->
+    <a class="navbar-brand"  routerLink="/">
+        Una's Brand
+    </a>
+
+    <!-- The hamburger -->
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="toggleNavbar()"
+        [attr.aria-expanded]="!navbarOpen" aria-controls="navbarContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- The collapsable part -->
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarContent">
+
+        <!-- The links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="/form1" (click)="toggleNavbar()">Go to
+                    Form1</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/ListPeople" (click)="toggleNavbar()">List all
+                    of the people</a></li>
+            <li *ngIf="(authService.IsLoggedIn())" class="nav-item"><a class="nav-link" routerLink="/protected" (click)="toggleNavbar()">Protected
+                    Component </a>
+            </li>
+        </ul>
+
+  <!-- The login and register-->
+
+        <a class="nav-link" *ngIf="!(authService.IsLoggedIn())" routerLink="/register">Register Here</a>
+
+        <a class="nav-link" *ngIf="!(authService.IsLoggedIn())" routerLink="/login">Login Here</a>
+
+
+        <div  *ngIf="(authService.IsLoggedIn())">
+            Logged in as {{ authService.GetDisplayName()}}
+            <a class="btn btn-outline-primary" href (click)="logout()"> Log Out</a>
+        </div>
+    </div>
+</nav>

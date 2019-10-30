@@ -10,25 +10,28 @@ import { EmailValidator } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public User$;
+  public message : string;
 
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    this.User$ = this.authService.user$;
   }
 
   public login(email: string, password: string) {
-    this.authService.Login(email, password);
+    this.authService.Login(email, password)
+    .then(resolve => {
+      console.log("success loggin in");
+    })
+    .catch( err =>{
+      console.log(err);
+      this.message = err;
+    })
    
   }
 
-  public signup(email: string, password: string) {
-    this.authService.SignUp(email, password);
-   
-  }
+ 
 
-  public logout(){
-    this.authService.Logout();
-  }
+
+
 
 }

@@ -2,7 +2,7 @@
 <h4>Use an exisiting e-mail and a new password for this application</h4>
 <form [formGroup]="registerForm">
     <div class="form-group">
-        <label for="email" >Email address</label>
+        <label for="email">Email address</label>
         <input id="email" type="email" formControlName="email" class="form-control">
     </div>
     <div class="form-group">
@@ -12,9 +12,16 @@
     <div class="form-group"><label for="password2">Confirm Password</label>
         <input id="password2" type="password" class="form-control" formControlName="password2">
     </div>
-    <label *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</label>
-    <label *ngIf="successMessage" class="alert alert-success">{{successMessage}}</label>
-   
+
+    <div>
+        <label *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</label>
+        <label *ngIf="successMessage" class="alert alert-success">{{successMessage}}</label>
+    </div>
+    <div *ngIf="registerForm.hasError('notMatching') && (password2.touched || password2.dirty)"
+        class="alert alert-danger">
+        Passwords don't match
+    </div>
+
     <button type="submit" (click)="tryRegister()" class="btn btn-primary"
         [disabled]="registerForm.invalid">Register</button>
 </form>

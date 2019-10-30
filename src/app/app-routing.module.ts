@@ -13,6 +13,7 @@ import { ProtectedComponent} from './protected/protected.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 // the array below defines the routes for the application
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'About', redirectTo: '/Home'},
   {path: 'form1', component: Form1Component},
   {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'ListPeople', component: ListPeopleComponent},
   {path: 'person/:id', component: PersonDetailsComponent},
   {path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard]},

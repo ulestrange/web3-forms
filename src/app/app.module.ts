@@ -26,16 +26,25 @@ import { LoginComponent} from './login/login.component';
 import { ShowRouteInfoComponent } from './show-route-info/show-route-info.component';
 import { RegisterComponent } from './register/register.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDuSeBVfw-z0PFWi_269O9l9F-ZK0COm8w',
-  authDomain: 'web3angular.firebaseapp.com',
-  databaseURL: 'https://web3angular.firebaseio.com',
-  projectId: 'web3angular',
-  storageBucket: 'web3angular.appspot.com',
-  messagingSenderId: '878952047455',
-  appId: '1:878952047455:web:40943f6df0a8ef71774cea'
+  // apiKey: 'AIzaSyDuSeBVfw-z0PFWi_269O9l9F-ZK0COm8w',
+  // authDomain: 'web3angular.firebaseapp.com',
+  // databaseURL: 'https://web3angular.firebaseio.com',
+  // projectId: 'web3angular',
+  // storageBucket: 'web3angular.appspot.com',
+  // messagingSenderId: '878952047455',
+  // appId: '1:878952047455:web:40943f6df0a8ef71774cea'
+
+  apiKey: "AIzaSyDRFnncqM9eZ2dZXG7ugfwnu5BtCxtR0Dk",
+  authDomain: "web32019.firebaseapp.com",
+  databaseURL: "https://web32019.firebaseio.com",
+  projectId: "web32019",
+  storageBucket: "web32019.appspot.com",
+  messagingSenderId: "734130629250",
+  appId: "1:734130629250:web:da6840ca32c4f30269629b"
 };
 
 @NgModule({
@@ -64,7 +73,8 @@ const firebaseConfig = {
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
 
   ],
   providers: [],

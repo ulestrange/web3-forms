@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { debounceTime, map, filter, pluck, take } from 'rxjs/operators';
 import { Subject, interval, Observable, merge, of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 
 
@@ -25,29 +26,45 @@ export class UserDataService {
     }
   ];
 
-  constructor() {
+  peopleCollection: AngularFirestoreCollection<Person>;
+  peopleData: Observable<Person[]>;
+
+  people2: Person[];
+
+  constructor(private afs: AngularFirestore) {
+    this.peopleCollection = afs.collection<Person>('people');
+
 
   }
 
-
-  // for testing only this returns an observable 
   getCurrentUsers(): Observable<Person[]> {
-    return interval(3000).pipe(
-      map(value => this.people.filter(this.isActive)),
-      take(10)
-    );
+    this.peopleData = this.peopleCollection.valueChanges();
+
+    this.peopleData.subscribe(data => {
+      console.log('Data', JSON.stringify(data));
+    })
+    return this.peopleData;
+
   }
+
+ // // for testing only this returns an observable 
+  // getCurrentUsers(): Observable<Person[]> {
+  //   return interval(3000).pipe(
+  //     map(value => this.people.filter(this.isActive)),
+  //     take(10)
+  //   );
+  // }
 
   // for testing only, sets some people active
 
   private isActive(p: Person) : boolean
-  {
-    return (Math.random() > 0.8);
-  }
+{
+  return (Math.random() > 0.8);
+}
 
-  getUserDataList(): Person[] {
-    return this.people;
-  }
+getUserDataList(): Person[] {
+  return this.people;
+}
 
 }
 

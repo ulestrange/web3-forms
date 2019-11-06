@@ -12,8 +12,8 @@ import { Person } from '../model/person';
 })
 export class UserDataService {
 
-  private people: Person[] = [
-    { id: '1', firstName: 'Una', lastName: 'Evans', interests: [], active: false },
+  public people: Person[] = [
+    { id: '1', firstName: 'Simor', lastName: 'Harris', interests: [], active: false },
     { id: '2', firstName: 'Boris', lastName: 'Johnson', interests: ['Brexit', 'Busses'], active: false },
     { id: '3', firstName: 'Therese', lastName: 'May', interests: ['Shoes', 'Brexit'], active: false },
     {
@@ -33,6 +33,7 @@ export class UserDataService {
 
   constructor(private afs: AngularFirestore) {
     this.peopleCollection = afs.collection<Person>('people');
+    this.addPersonToDatabase(this.people[0]);
 
 
   }
@@ -65,6 +66,14 @@ export class UserDataService {
 getUserDataList(): Person[] {
   return this.people;
 }
+
+addPersonToDatabase(person: Person){
+  this.peopleCollection.add((person));
+}
+
+// addAllPeople(){
+//   for ()
+
 
 }
 

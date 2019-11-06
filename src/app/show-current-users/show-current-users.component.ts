@@ -25,6 +25,11 @@ export class ShowCurrentUsersComponent implements OnInit {
       },
       complete: () => { console.log("all done") }
     });
+  }
+
+public addPerson(){
+
+  this.userDataService.addPersonToDatabase(this.userDataService.people[0]);
 
 
   }
